@@ -1,0 +1,96 @@
+# modeldir is ./models/{experiment_name}/{run}
+experiment_name: test
+run: test
+
+
+
+# rootdir of the data, this path is appended to the file identifier in the segmentation decatlon formatted json file
+data_root: ./data/pddca
+# segmentation decatlon formatted dataset description
+dataset_desc: ./config/data/task_HaN.json
+
+# workers used for data loading
+num_workers: 6
+val_num_workers: 6
+ds_cache_rate: 1.0
+
+# epoch validation interval
+val_interval: 20
+num_val_batches: 25
+
+
+# continues training if a checkpoint exists
+continue_training: True
+# if continue_training is true and specific checkpoint file can be loaded by giving its name
+# during inference, also this checkpoint file is loaded if it exists
+checkpoint_file: None
+
+
+
+
+# training device, can also be changed by cudas environment variables
+device: 0
+
+# num epochs
+epochs: 1000
+# num batches by epoch
+num_epoch_batches: 125
+
+# use automated mixed precision (tested but does not seem to save any memory)
+amp: False
+
+# deterministic training to reproduce results
+determinism: True
+determinism_seed: 0
+
+# possible multi_gpu option but not tested (debug rank is likely indexing the logging machine)
+multi_gpu: False
+local_debug_rank: 0
+
+inference_slw_overlap: 0.5
+inference_slw_batch_size: 4
+# mode options constant/gaussian
+inference_slw_mode: gaussian
+
+# final batch size is batch_size*num_samples
+batch_size: 1
+num_samples: 2
+
+# use the foreground oversampling of monai which is probabilistic, nnU-Net samples according to the given ratio
+# which ensures that there are always positive samples within a patch, probably a workaround for missing classes
+probabilistic_pos_neg: True
+pos_sample_num: 1
+neg_sample_num: 2
+# list of labels to be set as foreground for the foreground oversampling
+labels : []
+
+# for available options see train.get_loss.avail_losses
+loss: ce_dice
+lr: 1e-2
+lr_decay: True
+
+
+network: dynunet
+dimension: 3
+
+patch_size: [192, 160, 56]
+
+spacing: [0.98000002, 0.98000002, 2.49962478]
+
+# option to force isotrop resampling, nnU-Net chooses to resample 2D slices
+# when the ration between max(spacing)/min(spacing) is to large
+force_isotropy: False
+# save softmax outputs, used to generate the train-test time violin plot of the paper
+save_prob_maps: False
+
+# remove background before sampling
+crop_foreground: True
+clip: [-170, 1680]
+#mean and standard deviation used to normalize the data
+norm: [324.7904, 505.2889]
+
+
+
+
+
+

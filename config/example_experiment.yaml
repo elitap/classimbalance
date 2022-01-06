@@ -1,0 +1,8 @@
+# here we can overwrite all default values, for an experiment
+experiment_name: test
+run: test2d
+
+dimension: 2
+
+patch_size:  [512, 512, 1]
+spacing: [0.98000002, 0.98000002, 3]

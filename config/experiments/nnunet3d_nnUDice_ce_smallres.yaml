@@ -1,0 +1,5 @@
+experiment_name: cars22
+run: nnunet3d_nnUDice_ce_smallres
+
+loss: ce_dice_bd_nb
+patch_size: [96, 80, 48]

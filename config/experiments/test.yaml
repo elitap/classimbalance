@@ -1,0 +1,7 @@
+experiment_name: testo
+run: bla
+
+dataset_desc: ./config/data/task_HaN.json
+
+loss: ce_dice_bd_nb
+patch_size: [192, 160, 56]
