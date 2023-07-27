@@ -33,7 +33,7 @@ Tensorboard logs are written to the model directory of the experiment, the param
 
 ### Inference
 1. Pretrained weights are given [here](https://drive.google.com/file/d/1PvQzxbLDM5gXdfiwQeCwI2ymfuZc4E-9/view?usp=sharing) (skip next point if you trained the model by your own)
-2. Extract the pretrained experiment models to [models](models) (the baseline weights should then be found under models/cars22/nnunet3d_caDice_ce/ckpt/checkpoint_final_iteration=125000.pt)
+2. Extract the pretrained experiment models to [models/cars22/](models/cars22/) (the baseline weights should then be found under models/cars22/nnunet3d_caDice_ce/ckpt/checkpoint_final_iteration=125000.pt)
 3. e.g. to infer the baseline experiment run (change yaml file to run your own):
 ```python
 python src/inference.py --experiment_config config/experiments/nnunet3d_nnUDice_ce.yaml 
