@@ -1,0 +1,142 @@
+{
+    "description": "",
+    "labels": {
+        "0": "Background",
+        "1": "Brainstem",
+        "2": "OpticChiasm",
+        "3": "OpticNerveL",
+        "4": "OpticNerveR",
+        "5": "ParotidGlandL",
+        "6": "ParotidGlandL",
+        "7": "Mandible"
+    },
+    "licence": "hands off!",
+    "modality": {
+        "0": "CT"
+    },
+    "name": "miccai han seg challenge",
+    "numTest": 15,
+    "numTraining": 25,
+    "reference": "",
+    "release": "0.0",
+    "tensorImageSize": "4D",
+    "test": [
+        "./0522c0555_volume.nii.gz",
+        "./0522c0576_volume.nii.gz",
+        "./0522c0598_volume.nii.gz",
+        "./0522c0659_volume.nii.gz",
+        "./0522c0661_volume.nii.gz",
+        "./0522c0667_volume.nii.gz",
+        "./0522c0669_volume.nii.gz",
+        "./0522c0708_volume.nii.gz",
+        "./0522c0727_volume.nii.gz",
+        "./0522c0746_volume.nii.gz",
+        "./0522c0788_volume.nii.gz",
+        "./0522c0806_volume.nii.gz",
+        "./0522c0845_volume.nii.gz",
+        "./0522c0857_volume.nii.gz",
+        "./0522c0878_volume.nii.gz"
+    ],
+    "validation": [
+        {
+            "image": "./0522c0001_volume.nii.gz",
+            "label": "./0522c0001_segmentation.nii.gz"
+        },
+        {
+            "image": "./0522c0002_volume.nii.gz",
+            "label": "./0522c0002_segmentation.nii.gz"
+        },
+        {
+            "image": "./0522c0003_volume.nii.gz",
+            "label": "./0522c0003_segmentation.nii.gz"
+        },
+        {
+            "image": "./0522c0009_volume.nii.gz",
+            "label": "./0522c0009_segmentation.nii.gz"
+        },
+        {
+            "image": "./0522c0013_volume.nii.gz",
+            "label": "./0522c0013_segmentation.nii.gz"
+        },
+        {
+            "image": "./0522c0014_volume.nii.gz",
+            "label": "./0522c0014_segmentation.nii.gz"
+        },
+        {
+            "image": "./0522c0017_volume.nii.gz",
+            "label": "./0522c0017_segmentation.nii.gz"
+        },
+        {
+            "image": "./0522c0057_volume.nii.gz",
+            "label": "./0522c0057_segmentation.nii.gz"
+        },
+        {
+            "image": "./0522c0070_volume.nii.gz",
+            "label": "./0522c0070_segmentation.nii.gz"
+        },
+        {
+            "image": "./0522c0077_volume.nii.gz",
+            "label": "./0522c0077_segmentation.nii.gz"
+        },
+        {
+            "image": "./0522c0079_volume.nii.gz",
+            "label": "./0522c0079_segmentation.nii.gz"
+        },
+        {
+            "image": "./0522c0081_volume.nii.gz",
+            "label": "./0522c0081_segmentation.nii.gz"
+        },
+        {
+            "image": "./0522c0125_volume.nii.gz",
+            "label": "./0522c0125_segmentation.nii.gz"
+        },
+        {
+            "image": "./0522c0132_volume.nii.gz",
+            "label": "./0522c0132_segmentation.nii.gz"
+        },
+        {
+            "image": "./0522c0147_volume.nii.gz",
+            "label": "./0522c0147_segmentation.nii.gz"
+        },
+        {
+            "image": "./0522c0149_volume.nii.gz",
+            "label": "./0522c0149_segmentation.nii.gz"
+        },
+        {
+            "image": "./0522c0159_volume.nii.gz",
+            "label": "./0522c0159_segmentation.nii.gz"
+        },
+        {
+            "image": "./0522c0161_volume.nii.gz",
+            "label": "./0522c0161_segmentation.nii.gz"
+        },
+        {
+            "image": "./0522c0190_volume.nii.gz",
+            "label": "./0522c0190_segmentation.nii.gz"
+        },
+        {
+            "image": "./0522c0195_volume.nii.gz",
+            "label": "./0522c0195_segmentation.nii.gz"
+        },
+        {
+            "image": "./0522c0226_volume.nii.gz",
+            "label": "./0522c0226_segmentation.nii.gz"
+        },
+        {
+            "image": "./0522c0248_volume.nii.gz",
+            "label": "./0522c0248_segmentation.nii.gz"
+        },
+        {
+            "image": "./0522c0251_volume.nii.gz",
+            "label": "./0522c0251_segmentation.nii.gz"
+        },
+        {
+            "image": "./0522c0253_volume.nii.gz",
+            "label": "./0522c0253_segmentation.nii.gz"
+        },
+        {
+            "image": "./0522c0328_volume.nii.gz",
+            "label": "./0522c0328_segmentation.nii.gz"
+        }
+    ]
+}
