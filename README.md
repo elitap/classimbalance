@@ -25,7 +25,7 @@ Simply run the training script using one of the given [config files](config/expe
 
 e.g. training the nnU-Net baseline:
 ```python
-python src/inference.py --experiment_config config/experiments/nnunet3d_nnUDice_ce.yaml 
+python src/train.py --experiment_config config/experiments/nnunet3d_nnUDice_ce.yaml 
 ```
 
 Tensorboard logs are written to the model directory of the experiment, the parameter configuration of all experiments is logged using mlflow and can be found in [mlruns](mlruns) after the training.
