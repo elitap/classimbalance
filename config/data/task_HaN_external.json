@@ -1,0 +1,37 @@
+{
+    "description": "",
+    "labels": {
+        "0": "Background",
+        "1": "Brainstem",
+        "2": "OpticChiasm",
+        "3": "OpticNerveL",
+        "4": "OpticNerveR",
+        "5": "ParotidGlandL",
+        "6": "ParotidGlandL",
+        "7": "Mandible"
+    },
+    "licence": "hands off!",
+    "modality": {
+        "0": "CT"
+    },
+    "name": "miccai han seg challenge",
+    "numTest": 10,
+    "numTraining": 25,
+    "reference": "",
+    "release": "0.0",
+    "tensorImageSize": "4D",
+    "test": [
+        "./01_MASKED.nii.gz",
+        "./02_MASKED.nii.gz",
+        "./03_MASKED.nii.gz",
+        "./04_MASKED.nii.gz",
+        "./05_MASKED.nii.gz",
+        "./06_MASKED.nii.gz",
+        "./07_MASKED.nii.gz",
+        "./08_MASKED.nii.gz",
+        "./09_MASKED.nii.gz",
+        "./10_MASKED.nii.gz"
+    ],
+    "validation": [],
+    "train": []
+}
