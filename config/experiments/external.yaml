@@ -1,0 +1,15 @@
+experiment_name: external
+run: nnunet3d_nnUDice_ce
+#run: nnunet3d_caDice_ce_smallres
+
+
+# rootdir of the data, this path is appended to the file identifier in the segmentation decatlon formatted json file
+data_root: ./data/aachen_test
+# segmentation decatlon formatted dataset description
+dataset_desc: ./config/data/task_HaN_mandib_help.json
+
+#loss: ce_mydice
+#patch_size: [96, 80, 48]
+
+loss: ce_dice_bd_nb
+patch_size: [192, 160, 56]

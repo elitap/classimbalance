@@ -3,11 +3,10 @@ experiment_name: test
 run: test
 
 
-
 # rootdir of the data, this path is appended to the file identifier in the segmentation decatlon formatted json file
-data_root: ./data/Masked_Cropped
+data_root: ./data/pddca
 # segmentation decatlon formatted dataset description
-dataset_desc: ./config/data/task_HaN_mandib_help.json
+dataset_desc: ./config/data/task_HaN.json
 
 # workers used for data loading
 num_workers: 6

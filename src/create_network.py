@@ -32,6 +32,7 @@ def get_network(properties, param):
     in_channels = len(properties["modality"])
 
     kernels, strides = get_kernels_strides(param.patch_size, param.spacing, param.dimension)
+    print(f'kernels: {kernels}, strides: {strides} used for training')
     # like nnunet use all except the last two steps
     deep_supervision = len(kernels) - 2
 
