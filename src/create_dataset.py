@@ -2,7 +2,7 @@ import os
 import torch
 
 import torch.distributed as dist
-from monai.data import (CacheDataset, DataLoader, load_decathlon_datalist,
+from monai.data import (CacheDataset, PersistentDataset, DataLoader, load_decathlon_datalist,
                         load_decathlon_properties, partition_dataset)
 
 from transforms import get_task_transforms
@@ -41,11 +41,18 @@ def get_data(param, mode="train"):
                 even_divisible=False,
             )[dist.get_rank()]
 
-        val_ds = CacheDataset(
-            data=datalist,
-            transform=transform,
-            num_workers=4,
-        )
+        if param.ds_cache_dir is not None:
+            val_ds = PersistentDataset(
+                data=datalist,
+                transform=transform,
+                cache_dir=param.ds_cache_dir
+            )
+        else:
+            val_ds = CacheDataset(
+                data=datalist,
+                transform=transform,
+                num_workers=4,
+            )
 
         data_loader = DataLoader(
             val_ds,
@@ -64,12 +71,20 @@ def get_data(param, mode="train"):
                 even_divisible=True,
             )[dist.get_rank()]
 
-        train_ds = CacheDataset(
-            data=datalist,
-            transform=transform,
-            num_workers=8,
-            cache_rate=param.ds_cache_rate,
-        )
+        if param.ds_cache_dir is not None:
+            train_ds = PersistentDataset(
+                data=datalist,
+                transform=transform,
+                cache_dir=param.ds_cache_dir
+            )
+        else:        
+            train_ds = CacheDataset(
+                data=datalist,
+                transform=transform,
+                num_workers=8,
+                cache_rate=param.ds_cache_rate,
+            )
+
         data_loader = DataLoader(
             train_ds,
             batch_size=param.batch_size,

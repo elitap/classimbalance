@@ -32,6 +32,7 @@ class Config:
     val_interval: int
     num_val_batches: int
     ds_cache_rate: float
+    ds_cache_dir: str | None
     continue_training: bool
     checkpoint_file: str
     epochs: int

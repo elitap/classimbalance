@@ -13,6 +13,11 @@ num_workers: 6
 val_num_workers: 6
 ds_cache_rate: 1.0
 
+# if cache dir is a valid path, we use hd caching instead of ram caching using the given path
+# be aver that keys into the cache dir are created with hash functions of the file, so the dir
+# has to be recreated if ds preprocessing params are changed (i.e. the spacing)
+ds_cache_dir: None
+
 # epoch validation interval
 val_interval: 20
 num_val_batches: 25

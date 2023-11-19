@@ -15,12 +15,11 @@ tensorboard
 mlflow
 pytorch-ignite==0.4.4
 psutil
-nnunet
+# nnunet
 numpy
 argparse
 pandas
 matplotlib
 PyYAML
 pydantic
-sklearn
 scikit-learn

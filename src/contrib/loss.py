@@ -286,11 +286,11 @@ class DiceLoss(_Loss):
                     f = f[:, 1:]
                     ground_o = ground_o[:, 1:]
 
-            # f = (torch.sum(f, dim=-1) / count_nonzeros(ground_o, dim=-1))
-            f = - (torch.sum(f, dim=-1) / count_nonzeros(ground_o, dim=-1))
+            f = (torch.sum(f, dim=-1) / count_nonzeros(ground_o, dim=-1))
+            # f = - (torch.sum(f, dim=-1) / count_nonzeros(ground_o, dim=-1))
         else:
-            # f: torch.Tensor = (2.0 * intersection + self.smooth_nr) / (denominator + self.smooth_dr)
-            f: torch.Tensor = - (2.0 * intersection + self.smooth_nr) / (denominator + self.smooth_dr)
+            f: torch.Tensor = (2.0 * intersection + self.smooth_nr) / (denominator + self.smooth_dr)
+            # f: torch.Tensor = - (2.0 * intersection + self.smooth_nr) / (denominator + self.smooth_dr)
 
             if not self.include_background:
                 if self.batch:

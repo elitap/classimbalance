@@ -1,7 +1,7 @@
 from typing import Tuple, Union, Dict, Optional
 import os
 import numpy as np
-import mlflow as mlf
+# import mlflow as mlf
 from argparse import ArgumentDefaultsHelpFormatter, ArgumentParser
 
 import torch
@@ -131,6 +131,7 @@ def train(param):
         train_handlers += [LrScheduleHandler(lr_scheduler=scheduler, print_lr=True)]
 
     ckpt_file, iteration = get_checkpoint_file(param)
+    print("checkpoint file", ckpt_file, iteration)
     if ckpt_file is not None:
         if param.multi_gpu:
             # check out the map_param of the CheckpointLoader
@@ -166,15 +167,15 @@ def train(param):
 
     # log and run
     # todo probably report individual dice scores here
-    @evaluator.on(Events.EPOCH_COMPLETED)
-    def log_metric(engine):
-        mlf.log_metric("val_dice", engine.state.metrics['val_mean_dice'])
+    # @evaluator.on(Events.EPOCH_COMPLETED)
+    # def log_metric(engine):
+    #    mlf.log_metric("val_dice", engine.state.metrics['val_mean_dice'])
 
-    @trainer.on(Events.EPOCH_COMPLETED)
-    def log_metric(engine):
-        mlf.log_metric("loss", engine.state.metrics['avg_loss'])
-        if param.lr_decay:
-            mlf.log_metric("lr", scheduler.get_last_lr()[0])
+    # @trainer.on(Events.EPOCH_COMPLETED)
+    # def log_metric(engine):
+    #    mlf.log_metric("loss", engine.state.metrics['avg_loss'])
+    #    if param.lr_decay:
+    #        mlf.log_metric("lr", scheduler.get_last_lr()[0])
 
     configure_logger(param.train_log, param.local_debug_rank)
 
@@ -209,23 +210,23 @@ def get_loss(loss: str) -> _Loss:
     return avail_losses[loss]
 
 
-def log_environment(args):
-    from pip._internal.operations.freeze import freeze
-    with open("environment.txt", 'w') as out_file:
-        for requirement in freeze(local_only=True):
-            out_file.write(requirement+"\n")
-    mlf.log_artifact("environment.txt")
-    mlf.log_artifact(args['default_config'])
-    if args["experiment_config"] is not None and os.path.exists(args["experiment_config"]):
-        mlf.log_artifact(args['experiment_config'])
+# def log_environment(args):
+#    from pip._internal.operations.freeze import freeze
+#    with open("environment.txt", 'w') as out_file:
+#        for requirement in freeze(local_only=True):
+#            out_file.write(requirement+"\n")
+#    mlf.log_artifact("environment.txt")
+#    mlf.log_artifact(args['default_config'])
+#    if args["experiment_config"] is not None and os.path.exists(args["experiment_config"]):
+#        mlf.log_artifact(args['experiment_config'])
 
 
-def log_param(param):
+# def log_param(param):
 
-    mydict = param.asdict()
+#     mydict = param.asdict()
 
-    for k in mydict:
-        mlf.log_param(k, mydict[k])
+#     for k in mydict:
+#         mlf.log_param(k, mydict[k])
 
 
 def increase_num_filehandles():
@@ -269,18 +270,18 @@ if __name__ == "__main__":
         if param.local_debug_rank == 0:
             print("Using deterministic training.")
 
-    mlf.set_tracking_uri(uri="./mlruns")
-    mlf.set_experiment(experiment_name=param.experiment_name)
+    # mlf.set_tracking_uri(uri="./mlruns")
+    # mlf.set_experiment(experiment_name=param.experiment_name)
 
-    with mlf.start_run(run_name=param.run):
-        print(mlf.get_artifact_uri())
-        mlf.log_artifacts("src", "src")
-        log_environment(args)
-        log_param(param)
+    # with mlf.start_run(run_name=param.run):
+    #    print(mlf.get_artifact_uri())
+    #    mlf.log_artifacts("src", "src")
+    #    log_environment(args)
+    #    log_param(param)
 
-        train(param)
+    train(param)
 
-        mlf.log_artifact(param.train_log)
+    #    mlf.log_artifact(param.train_log)
 
     inference(param)
     if tool_exists("plastimatch"):

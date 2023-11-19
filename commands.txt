@@ -1,0 +1,7 @@
+python src/train.py -e config/experiments/HaN-Seg23/nnunet3d_caDice_ce.yaml --device 0
+
+python src/train.py -e config/experiments/HaN-Seg23/nnunet3d_caDice_ce_pretrained.yaml --device 1
+
+todo pretrained does not load the checkpoint yet!
+
+python src/train.py -e config/experiments/HaN-Seg23/nnunet3d_caDice_ce_smallres.yaml --device 1

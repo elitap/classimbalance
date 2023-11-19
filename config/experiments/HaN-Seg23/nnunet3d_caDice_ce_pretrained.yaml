@@ -1,0 +1,42 @@
+experiment_name: HaN-Seg23
+run: nnunet3d_caDice_ce_pretrained
+
+# rootdir of the data, this path is appended to the file identifier in the segmentation decatlon formatted json file
+data_root: ./data/HaN-Seg/set_1/combined
+# segmentation decatlon formatted dataset description
+dataset_desc: ./config/data/task_HaN-Seg23.json
+
+# workers used for data loading
+num_workers: 6
+val_num_workers: 6
+ds_cache_rate: 1.0
+
+# if cache dir is a valid path, we use hd caching instead of ram caching using the given path
+# be aver that keys into the cache dir are created with hash functions of the file, so the dir
+# has to be recreated if ds preprocessing params are changed (i.e. the spacing)
+ds_cache_dir: ./cache/0.63818359375_0.63818359375_2.0
+# ds_cache_dir: None
+
+loss: ce_mydice
+
+# continues training if a checkpoint exists
+continue_training: True
+# if continue_training is true and specific checkpoint file can be loaded by giving its name
+# during inference, also this checkpoint file is loaded if it exists
+checkpoint_file: 'models/cars22/nnunet3d_caDice_ce/ckpt/checkpoint_final_iteration=125000.pt'
+
+# use automated mixed precision (tested but does not seem to save any memory)
+amp: False
+
+patch_size: [224, 192, 40]
+spacing: [0.63818359375, 0.63818359375, 2.0]
+
+# option to force isotrop resampling, nnU-Net chooses to resample 2D slices
+# when the ration between max(spacing)/min(spacing) is to large
+force_isotropy: True
+
+# remove background before sampling
+crop_foreground: True
+clip: [-167, 1548]
+#mean and standard deviation used to normalize the data
+norm: [184.8667, 329.1338]
